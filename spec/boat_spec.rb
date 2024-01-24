@@ -14,6 +14,7 @@ RSpec.describe Boat do
     it 'has attributes' do
       expect(boat1.type).to eq(:kayak)
       expect(boat1.price).to eq(20)
+      expect(boat1.hours_rented).to eq(0)
     end
   end
   
