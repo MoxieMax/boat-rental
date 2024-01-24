@@ -18,4 +18,16 @@ RSpec.describe Boat do
     end
   end
   
+  describe '#add_hour' do
+    it 'adds time to the #hours_rented' do
+      expect(boat1.hours_rented).to eq(0)
+      
+      boat1.add_hour
+      boat1.add_hour
+      boat1.add_hour
+      
+      expect(boat1.hours_rented).to eq(3)
+    end
+  end
+  
 end
