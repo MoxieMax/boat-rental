@@ -14,4 +14,19 @@ class Dock
     
     @rental_log.store(boat, renter)
   end
+  
+  def charge(boat)
+    {
+      :card_number => @rental_log[boat].card_number,
+      :amount => rental_cost(boat)
+    }
+  end
+  
+  def hours_rented(boat)
+    [boat.hours_rented, @max_rental_time].min
+  end
+  
+  def rental_cost(boat)
+    hours_rented(boat) * boat.price
+  end
 end
