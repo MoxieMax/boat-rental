@@ -40,30 +40,77 @@ RSpec.describe Dock do
                                     })
     end
   end
-  
-  describe '#charge' do
-    it 'takes a boat as an argument and returns a hash with charges' do
-      expect(boat1.hours_rented).to eq(0)
-      expect(boat2.hours_rented).to eq(0)
-      expect(boat3.hours_rented).to eq(0)
-      
+  describe 'before each block' do
+    before :each do
       dock1.rent(boat1, rent1)
       dock1.rent(boat2, rent1)
       dock1.rent(boat3, rent2)
-      
-      boat1.add_hour
-      boat1.add_hour
-      
-      expect(boat1.hours_rented).to eq(2)
-      
-      expect(dock1.charge(boat1)).to eq({
-                                        :card_number => "4242424242424242",
-                                        :amount => 40
-                                      })
     end
     
-    it '' do
+    describe '#hours_rented' do
+      it 'determines the number of hours a boat has been rented' do
+        expect(dock1.hours_rented(boat1)).to eq(0)
+        expect(dock1.hours_rented(boat2)).to eq(0)
+        expect(dock1.hours_rented(boat3)).to eq(0)
+        
+        boat1.add_hour
+        boat1.add_hour
+        boat2.add_hour
+        
+        expect(dock1.hours_rented(boat1)).to eq(2)
+        expect(dock1.hours_rented(boat2)).to eq(1)
+        expect(dock1.hours_rented(boat3)).to eq(0)
+      end
       
+      it 'prevents a boat from being rented for longer than allowed' do
+        expect(dock1.hours_rented(boat1)).to eq(0)
+        expect(dock1.max_rental_time).to eq(3)
+        
+        boat1.add_hour #1
+        boat1.add_hour #2
+        boat1.add_hour #3
+        boat1.add_hour #4
+        
+        expect(dock1.hours_rented(boat1)).to eq(3)
+      end
+    end
+    
+    describe '#rental_cost' do
+      it 'determines the cost of renting a boat based on time rented' do
+        expect(dock1.hours_rented(boat1)).to eq(0)
+        expect(dock1.rental_cost(boat2)).to eq(0)
+        expect(dock1.rental_cost(boat1)).to eq(0)
+        
+        boat1.add_hour #1
+        boat1.add_hour #2
+        boat1.add_hour #3
+        
+        expect(dock1.rental_cost(boat1)).to eq(60)
+        expect(dock1.rental_cost(boat2)).to eq(0)
+      end
+    end
+    
+    describe '#charge' do
+      it 'takes a boat as an argument and returns a hash with charges' do
+        expect(boat1.hours_rented).to eq(0)
+        
+        boat1.add_hour
+        boat1.add_hour
+        boat3.add_hour
+        boat3.add_hour
+        boat3.add_hour
+        
+        expect(boat1.hours_rented).to eq(2)
+        
+        expect(dock1.charge(boat1)).to eq({
+                                          :card_number => "4242424242424242",
+                                          :amount => 40
+                                        })
+        expect(dock1.charge(boat3)).to eq({
+                                          :card_number => "1313131313131313",
+                                          :amount => 45
+                                        })
+      end
     end
   end
 end

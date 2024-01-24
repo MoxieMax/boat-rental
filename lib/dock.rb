@@ -16,11 +16,17 @@ class Dock
   end
   
   def charge(boat)
-    Hash.new({
-              :card_number => "card from customer",
-              :amount => "Need to use Boat.hours_rented * Boat.time to get :amount"
-            })
-    # Need to prevent a Boat from being rented longer than Dock max_rental_time 
-    # Need to use Boat.hours_rented * Boat.time to get :amount
+    {
+      :card_number => @rental_log[boat].card_number,
+      :amount => rental_cost(boat)
+    }
+  end
+  
+  def hours_rented(boat)
+    [boat.hours_rented, @max_rental_time].min
+  end
+  
+  def rental_cost(boat)
+    hours_rented(boat) * boat.price
   end
 end
