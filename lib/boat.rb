@@ -8,4 +8,9 @@ class Boat
     @price = attributes.fetch(:price)
     @hours_rented = 0
   end
+  
+  def add_hour
+    @hours_rented += 1
+  end
+  
 end
