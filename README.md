@@ -11,7 +11,7 @@
 
 # Activity
 
-## Iteration 1
+<!-- ## Iteration 1
 
 Use TDD to create a `Boat` and a `Renter` class that respond to the following interaction pattern:
 
@@ -51,7 +51,7 @@ pry(main)> renter.name
 
 pry(main)> renter.credit_card_number
 # => "4242424242424242"
-```
+``` -->
 
 ## Iteration 2
 
