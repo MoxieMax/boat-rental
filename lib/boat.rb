@@ -11,6 +11,8 @@ class Boat
   
   def add_hour
     @hours_rented += 1
+    
+    # Need to prevent a Boat from being rented longer than Dock max_rental_time 
   end
   
 end

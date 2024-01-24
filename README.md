@@ -53,7 +53,7 @@ pry(main)> renter.credit_card_number
 # => "4242424242424242"
 ``` -->
 
-## Iteration 2
+<!-- ## Iteration 2
 
 Use TDD to create a `Dock` class. It should have the following methods:
 
@@ -107,7 +107,7 @@ pry(main)> dock.rental_log
 #   #<Boat:0x00007fdeedae1860...> => #<Renter:0x00007fdeed0ab828...>,
 #   #<Boat:0x00007fdeedaa8bc8...> => #<Renter:0x00007fdeed8ce5c8...>
 # }
-```
+``` -->
 
 ## Iteration 3
 

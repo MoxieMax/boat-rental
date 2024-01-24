@@ -40,4 +40,30 @@ RSpec.describe Dock do
                                     })
     end
   end
+  
+  describe '#charge' do
+    it 'takes a boat as an argument and returns a hash with charges' do
+      expect(boat1.hours_rented).to eq(0)
+      expect(boat2.hours_rented).to eq(0)
+      expect(boat3.hours_rented).to eq(0)
+      
+      dock1.rent(boat1, rent1)
+      dock1.rent(boat2, rent1)
+      dock1.rent(boat3, rent2)
+      
+      boat1.add_hour
+      boat1.add_hour
+      
+      expect(boat1.hours_rented).to eq(2)
+      
+      expect(dock1.charge(boat1)).to eq({
+                                        :card_number => "4242424242424242",
+                                        :amount => 40
+                                      })
+    end
+    
+    it '' do
+      
+    end
+  end
 end
