@@ -3,7 +3,7 @@ require './lib/boat'
 
 RSpec.describe Boat do
   # before :each do
-    let!(:boat1) {Boat.create!(type: :kayak, price: 20)}
+    let (:boat1) {Boat.new(type: :kayak, price: 20)}
   # end
   
   describe '#Initialize' do
