@@ -11,9 +11,9 @@
 
 # Activity
 
-<!-- ## Iteration 1
+## Iteration 1
 
-Use TDD to create a `Boat` and a `Renter` class that respond to the following interaction pattern:
+<!-- Use TDD to create a `Boat` and a `Renter` class that respond to the following interaction pattern:
 
 ```ruby
 pry(main)> require './lib/boat'
@@ -53,9 +53,9 @@ pry(main)> renter.credit_card_number
 # => "4242424242424242"
 ``` -->
 
-<!-- ## Iteration 2
+## Iteration 2
 
-Use TDD to create a `Dock` class. It should have the following methods:
+<!-- Use TDD to create a `Dock` class. It should have the following methods:
 
 * `rent` - this method takes a `Boat` and a `Renter` as arguments. Calling this method signifies that the `Boat` has been rented by the `Renter`.
 * `rental_log` - this method returns a hash that associates a `Boat` with the `Renter` that rented it.
@@ -111,7 +111,7 @@ pry(main)> dock.rental_log
 
 ## Iteration 3
 
-Use TDD to implement a `Dock#charge` method:
+<!-- Use TDD to implement a `Dock#charge` method:
 
 * This method takes a `Boat` as an argument
 * This method returns a hash with two key/value pairs:
@@ -182,7 +182,7 @@ pry(main)> dock.charge(sup_1)
 #   :card_number => "1313131313131313",
 #   :amount => 45
 # }
-```
+``` -->
 
 ## Iteration 4
 
